@@ -41,5 +41,5 @@ This is a learning workspace, not continuous production hosting.
 
 ## Assignment status
 
-Live Discord and AI tests are still pending.
+The live Discord $hello test passed on November 4, 2026. The AI reply test is pending the OpenRouter connection.
 The optional submission also needs a 100–300-word project explanation and a Discord link.
