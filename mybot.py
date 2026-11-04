@@ -23,7 +23,7 @@ def ask_pirate(question):
     ) as router:
         result = router.chat.completions.create(
             model=model,
-            max_tokens=500,
+            max_tokens=1500,
             messages=[
                 {"role": "system", "content": (
                     "You are Pirate, a friendly practice bot for an AI course. "
@@ -34,7 +34,12 @@ def ask_pirate(question):
                 {"role": "user", "content": question},
             ],
         )
-        return (result.choices[0].message.content or "").strip()
+        choice = result.choices[0]
+        print(f"AI reply: model={result.model}; finish={choice.finish_reason}", flush=True)
+        reply = (choice.message.content or "").strip()
+        if choice.finish_reason == "length":
+            reply += "\n\nThis reply reached its response limit and may be incomplete. Try a narrower question."
+        return reply
 
 @client.event
 async def on_ready():
